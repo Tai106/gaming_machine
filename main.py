@@ -22,8 +22,25 @@ def get_slot_machine_spin(rows, cols, symbols):
         for _ in range(symbol_count):
             all_symbols.append(symbol)
 
+    # define columns list
+    columns = []
+    # generate a column for every single column.
+    for _ in range(cols):
+        column = []
+        current_symbols = all_symbols[:]
+        for _ in range(rows):
+            value = random.choice(current_symbols)
+            current_symbols.remove(value)
+            column.append(value)
+
+        columns.append(column)
+
+    return columns
+
 
 # deposit function will be used for collecting user input.
+
+
 def deposit():
     while True:
         amount = input("What would you like to deposit?")
@@ -34,7 +51,7 @@ def deposit():
             else:
                 print("Amount must be greater than 0.")
         else:
-            print("Please aenter a number.")
+            print("Please enter a number.")
     return amount
 
 
